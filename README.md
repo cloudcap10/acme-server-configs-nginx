@@ -13,6 +13,37 @@ your server improve the website's performance and security, while also
 ensuring that resources are served with the correct content-type and are
 accessible, if needed, even cross-domain.
 
+## Let's encrypt Automation using ACME
+
+git clone https://github.com/acmesh-official/acme.sh.git
+
+cd acme.sh
+
+./acme.sh --install --accountemail "security@example.com" # Provide valid email address
+
+source ~/.bashrc
+
+cd
+
+*********************** SAN Certs from LE using Standalone validation *********************** acme.sh --issue --standalone -d example.com -d www.example.com --ocsp-must-staple --keylength 2048
+
+*********************** SAN Certs from LE using Webroot validation ***********************
+
+acme.sh --issue -d example.com -d www.example.com --webroot /var/www/_letsencrypt --reloadcmd "sudo systemctl reload nginx.service" --ocsp-must-staple --keylength 2048
+
+*********************** Wildcard Certs from LE using DNS API validation *********************** export CF_Key="XXXXXXXXXXXXX" export CF_Email="xxxx@example.com"
+
+acme.sh --issue --dns dns_cf -d example.com -d '*.example.com' --ocsp-must-staple --keylength 2048
+
+acme.sh --list
+
+mkdir -p /etc/letsencrypt/example.com
+
+acme.sh --install-cert
+--domain example.com
+--cert-file /etc/letsencrypt/example.com/cert.pem
+--key-file /etc/letsencrypt/example.com/key.pem
+--fullchain-file /etc/letsencrypt/example.com/fullchain.pem
 
 ## Getting Started
 
