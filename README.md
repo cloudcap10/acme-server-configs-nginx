@@ -1,4 +1,10 @@
-# [Nginx Server Configs](https://github.com/h5bp/server-configs-nginx)
+# [Nginx Server Configs with ACME](https://github.com/h5bp/server-configs-nginx)
+
+This version is a highly modified fork of the original by H5BP from https://github.com/h5bp/server-configs-nginx.
+
+New in this version:
+
+1. Let's encrypt Automation using ACME
 
 [![Test](https://github.com/h5bp/server-configs-nginx/workflows/server/badge.svg)](https://github.com/h5bp/server-configs-nginx/actions?query=workflow%3Aserver)
 
