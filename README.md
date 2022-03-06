@@ -32,29 +32,31 @@ accessible, if needed, even cross-domain.
 ```
 
 
-*********************** SAN Certs from LE using Standalone validation ***********************
-acme.sh --issue --standalone -d example.com -d www.example.com --ocsp-must-staple --keylength 2048
-
-*********************** SAN Certs from LE using Webroot validation ***********************
-
-acme.sh --issue -d example.com -d www.example.com --webroot /var/www/_letsencrypt --reloadcmd "sudo systemctl reload nginx.service" --ocsp-must-staple --keylength 2048
-
-
 *********************** Wildcard Certs from LE using DNS API validation ***********************
-export CF_Key="XXXXXXXXXXXXX"
-export CF_Email="xxxx@example.com"
-
-acme.sh --issue --dns dns_cf -d example.com -d '*.example.com' --ocsp-must-staple --keylength 2048
-
-acme.sh --list
-
-mkdir -p /etc/letsencrypt/example.com
-
-acme.sh --install-cert \
+```shell
+ export CF_Key="XXXXXXXXXXXXX"
+```
+```shell
+ export CF_Key="XXXXXXXXXXXXX"
+```
+```shell
+ acme.sh --issue --dns dns_cf -d example.com -d '*.example.com' --ocsp-must-staple --keylength 2048
+```
+```shell
+ acme.sh --list
+```
+```shell
+ mkdir -p /etc/letsencrypt/example.com
+```
+```shell
+ acme.sh --install-cert \
         --domain example.com \
         --cert-file /etc/letsencrypt/example.com/cert.pem  \
         --key-file /etc/letsencrypt/example.com/key.pem \
         --fullchain-file /etc/letsencrypt/example.com/fullchain.pem
+```
+
+
 ## Getting Started
 
 Using the Nginx server configs repo directly has a few required steps to be able to work.
